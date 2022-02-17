@@ -8,7 +8,6 @@ float pentagon();
 
 int main()
 {
-    
     //Variable declaration
     int s, i;
     
