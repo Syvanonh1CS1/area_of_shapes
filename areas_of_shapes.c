@@ -1,61 +1,64 @@
 #include <stdio.h>
 
+void red(){
+  printf("\033[0;31m");
+}
+
+void reset () {
+  printf("\033[0m");
+}
 //Function declaration
 float circle();
 float triangle();
 float trapezium();
 float pentagon();
 
-int main()
-{
+int main(){
+    int s;
+    //Input the number of sides
+    printf("\nEnter the number of sides: \n");
+    scanf("%d", &s);
     
-    //Variable declaration
-    int s, i;
-    
-    for(i=1; i<=3; i++)
-    {
-        //Input the number of sides
-        printf("\nEnter the number of sides: \n");
-        scanf("%d", &s);
-    
-        if(s==0)
-        {
-            printf("\nThe shape is a circle with '0' sides. \n");
+    if(s==0){
+        printf("\nThe shape is a circle with '0' sides. \n");
         
-            //Function call
-            circle();
-        }
-    
-        if(s==3)
-        {
-            printf("\nThe shape is an equilateral triangle with '3' sides. \n");
-        
-            triangle();
-        }
-    
-        if(s==4)
-        {
-            printf("\nThe shape is a trapezium with '4' sides. \n");
-        
-            trapezium();
-        }
-    
-        if(s==5)
-        {
-            printf("\nThe shape is a regular pentagon with '5' sides. \n");
-        
-            pentagon();
-        }
-    
-        else
-        {
-            printf("Please enter 0 for a circle, 3 or an equilateral triangle, 4 for a trapezium or 5 for a regular pentagon \n \n");
-        }
+        //Function call
+        circle();
+        main();
     }
+    
+    if(s==3){
+        printf("\nThe shape is an equilateral triangle with '3' sides. \n");
+        
+        triangle();
+        main();
+    }
+    
+    if(s==4){
+        printf("\nThe shape is a trapezium with '4' sides. \n");
+        
+        trapezium();
+        main();
+    }
+    
+    if(s==5){
+        printf("\nThe shape is a regular pentagon with '5' sides. \n");
+        
+        pentagon();
+        main();
+    }
+    
+    else{
+        red();
+        printf("\nInvalid number of sides\n");
+        reset();
+        printf("\nEnter one of the following:\n0 - circle\n3 - equilateral triangle\n4 - trapezium\n5 - regular pentagon\n\n");
+        main();
+    }
+
 }
 
-float circle()
-{
+float circle(){
     float PI=3.1415926;
     float radius, area;
     
@@ -67,13 +70,15 @@ float circle()
     area = PI*radius*radius;
     
     //Show the area
-    printf("\nThe area is: %.3f \n", area);
+    printf("\nThe area is: ");
+    red();
+    printf("%.3f \n", area);
+    reset();
     
     return 0;
 }
 
-float triangle()
-{
+float triangle(){
     float coefficient=0.4330127;
     float base, area;
     
@@ -82,13 +87,15 @@ float triangle()
     
     area=coefficient*base*base;
     
-    printf("\nThe area is: %.3f \n", area);
+    printf("\nThe area is: ");
+    red();
+    printf("%.3f \n", area);
+    reset();
     
     return 0;
 }
 
-float trapezium()
-{
+float trapezium(){
     float a, b, h, area;
     
     printf("\nEnter the longer side: \n");
@@ -102,13 +109,15 @@ float trapezium()
     
     area=0.5*(a+b)*h;
     
-    printf("\nThe area is: %.3f \n", area);
+    printf("\nThe area is: ");
+    red();
+    printf("%.3f \n", area);
+    reset();
     
     return 0;
 }
 
-float pentagon()
-{
+float pentagon(){
     float coefficient=1.7204774;
     float c, area;
     
@@ -117,7 +126,10 @@ float pentagon()
     
     area=coefficient*c*c;
     
-    printf("\nThe area is %.3f \n", area);
+    printf("\nThe area is: ");
+    red();
+    printf("%.3f \n", area);
+    reset();
     
     return 0;
 }
